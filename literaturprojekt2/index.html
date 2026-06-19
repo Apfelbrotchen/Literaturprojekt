@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Projekt</title>
+
+<style>
+
+/* GLOBAL */
+body{
+    font-family:Arial, sans-serif;
+    background:#0f172a;
+    color:white;
+    margin:0;
+    transition:background .3s ease;
+}
+
+.button{
+	background:#0f172a;
+}
+
+body.modal-open{
+    overflow:hidden;
+}
+
+/* NAVIGATION */
+header{
+    background:#020617;
+    padding:18px 0;
+    box-shadow:0 2px 10px rgba(0,0,0,.4);
+}
+
+.nav{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+    font-size:15px;
+    opacity:.9;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:90px 20px 60px;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    opacity:.8;
+}
+
+/* CONTENT */
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+/* CARD (clickable + expandable) */
+.card{
+    background:#1e293b;
+    padding:25px;
+    margin-bottom:30px;
+    border-radius:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.35);
+    transition:transform .25s ease, box-shadow .25s ease;
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,.05);
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 15px 40px rgba(0,0,0,.55);
+}
+
+.card img{
+    width:100%;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+/* EXPANDED CARD */
+.card.scaled{
+    position:fixed;
+    top:50%;
+    left:50%;
+    width:min(900px,90vw);
+    height:80vh;
+    transform:translate(-50%,-50%) scale(1);
+    z-index:10000;
+    border-radius:18px;
+    background:#1e293b;
+    overflow-y:auto;
+    padding:45px;
+    box-shadow:0 30px 80px rgba(0,0,0,.75);
+    animation:zoomIn .35s ease;
+}
+
+/* Zoom animation */
+@keyframes zoomIn{
+    from{transform:translate(-50%,-50%) scale(.85); opacity:0;}
+    to{transform:translate(-50%,-50%) scale(1); opacity:1;}
+}
+
+/* Scrollbar styling */
+.card.scaled::-webkit-scrollbar{
+    width:8px;
+}
+.card.scaled::-webkit-scrollbar-thumb{
+    background:#475569;
+    border-radius:10px;
+}
+
+/* OVERLAY */
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    backdrop-filter:blur(4px);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .35s ease;
+    z-index:9999;
+}
+
+.overlay.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+/* CLOSE BUTTON */
+.close-btn{
+    position:absolute;
+    top:16px;
+    right:16px;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:none;
+    background:rgba(255,255,255,.15);
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+    display:grid;
+    place-items:center;
+    backdrop-filter:blur(4px);
+    transition:background .2s ease, transform .2s ease;
+}
+
+.close-btn:hover{
+    background:rgba(255,255,255,.3);
+    transform:scale(1.1);
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:35px;
+    background:#020617;
+    margin-top:60px;
+    opacity:.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+        <h2>Fashionbrand</h2>
+        
+    </div>
+</header>
+
+<section class="hero">
+    <h1>Projekt von Anhelina Shatets, Greta Koemme, Paul Olischer, Carl Olischer</h1>
+</section>
+
+<div class="container">
+
+    <div class="card">
+	
+        <h2>Converse</h2>
+        <img src="images\Convers\Convers-andere-seite.jpeg"> </img>
+		<img src="images\Convers\Converse-seite.jpeg"> </img>
+		<img src="images\Convers\Convers-ganze-seite.jpeg"> </img>
+		<img src="images\Convers\Convers-ganze-seite-weiterraus.jpeg"> </img>
+		<img src="images\Convers\Convers-schuhe-hintenrechts.jpeg"> </img>
+		<img src="images\Convers\Convers-seite-closeup.jpeg"> </img>
+		<img src="images\Convers\Convers-spitze.jpeg"> </img>
+		
+        <p>Brit-Punk in purester Form. Wie die ‚Sex-Pistols‘ einst schrieben „God Save the Queen“</p>
+    
+	</div>
+
+
+    <div class="card">
+        <h2>Motte</h2>
+        <img src="images\Motte\Motte-1.jpeg">
+		<img src="images\Motte\Motte-2.jpeg">
+		<img src="images\Motte\Motte-3.jpeg">
+		<img src="images\Motte\Motte-4.jpeg">
+		<p>Die Motte die nach dem Herzen jagdt. Wie wundervoll die liebe doch ist, egal wie lange man sucht, nur sie kann einen finden. Zur richtigen Zeit am richtigen Ort, da wird sie sein. Die Liebe.
+</p>
+    </div>
+
+    <div class="card">
+        <h2>Camojacke</h2>
+        <img src="images\Camojacke\Patronenhülsen-camojacke-oben.jpeg">
+		<img src="images\Camojacke\Patronenhülsen-camojacke.jpeg">
+		<img src="images\Camojacke\Camojacke-hinten.jpeg">
+		<img src="images\Camojacke\camojacke-closeup-schräg.jpeg">
+		<p>In einer Zeit voll Krieg und Bosheit, sei das Licht. (Inspiriert von „Full Metal Jacket“)Für die die nicht tatenlos zuschauen, sondern ein aktiver teil des Guten sind. Der Stern der den Weg weißt ist der der niemals aufhört zu scheinen.</p>
+    </div>
+	
+	    <div class="card">
+        <h2>Streifenshirt</h2>
+        <img src="images\Streifenshirt\Streifenshirt-oben.jpeg">
+		<img src="images\Streifenshirt\Streifenshirt-closeup-oben.jpeg">
+		<img src="images\Streifenshirt\streifenshirt-closeup.jpeg">
+		<p>Wenn die Tage grauer werden und die Laune sinkt. „Der Preis jemanden sehr zu lieben ist es nie wieder lieben zu können“ - Fyodor Destoyevsky</p>
+    </div>
+
+    <div class="card">
+        <h2>Tanktop</h2>
+        <img src="images\Tanktop\Tanktop-vorne.jpeg">
+		<img src="images\Tanktop\Tanktop-hinten.jpeg">
+		<img src="images\Tanktop\Lupe-tanktop.jpeg">
+		<p>Für die tiefen Nächte in dem die Sterne den Weg erleuchten. Ziel für die Sonne, denn auch wenn du verfehlst landest du zwischen den Sternen.</p>
+    </div>
+
+    <div class="card">
+        <h2>Perlentasche</h2>
+        <img src="images\Tasche\Tasche-oben.jpeg">
+		<img src="images\Tasche\Tasche-schräg.jpeg">
+		<img src="images\Tasche\Tasche-vorne.jpeg">
+		<img src="images\Tasche\perlendinger.jpeg">
+		<p>Natürliche Perlen, von Schönheit kaum zu übertreffen. Sie geben deinem weißen Stil den letzten schliff, damit das Äußere genau dein inneres Licht wiederspiegeln kann.</p>
+    </div>
+	
+	    <div class="card">
+        <h2>Top</h2>
+        <img src="images\Top\Top-weiß.jpeg">
+		<img src="images\Top\Top-weiß-hinten.jpeg">
+		<img src="images\Top\Lupe-top-weiß.jpeg">
+		<p>Ideal für den warmen Tag am Strand. Wild wie die Meere, jedoch ruhiger je tiefer du tauchst. Ein perfekter Spiegel zu den Wunderschönen Meeren.</p>
+    </div>
+
+</div>
+
+
+<div class="card">
+        <h2>Projektbeschreibung</h2>
+        <p>
+            Dieses Projekt ist im zuge des Literaturunterrichts der 12. Klasse im BBZ Mölln entstanden. Unsere Gruppe hat sich vor die Herrausvorderungen gestellt, eigene Fashion pieces zu erstellen und für diese eine eigene Website zu erstellen.
+        </p>
+    </div>
+	
+	
+<div class="overlay"></div>
+
+<footer>
+    <p>Fashionbrand</p>
+</footer>
+
+<script>
+
+const cards = docusment.querySelectorAll(".card");
+const overlay = document.querySelector(".overlay");
+
+cards.forEach(card => {
+    card.addEventListener("click", () => expand(card));
+});
+
+function expand(card){
+    if(document.querySelector(".card.scaled")) return;
+
+    card.classList.add("scaled");
+    overlay.classList.add("active");
+    document.body.classList.add("modal-open");
+
+    const closeBtn = document.createElement("button");
+    closeBtn.innerHTML = "X";
+    closeBtn.classList.add("close-btn");
+
+    closeBtn.onclick = (e) => {
+        e.stopPropagation();
+        close(card, closeBtn);
+    };
+
+    overlay.onclick = () => close(card, closeBtn);
+
+    card.appendChild(closeBtn);
+}
+
+function close(card, btn){
+    card.classList.remove("scaled");
+    overlay.classList.remove("active");
+    document.body.classList.remove("modal-open");
+    btn.remove();
+}
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        const openCard = document.querySelector(".card.scaled");
+        const btn = document.querySelector(".close-btn");
+        if (openCard && btn) close(openCard, btn);
+    }
+});
+
+</script>
+
+</body>
+</html>
